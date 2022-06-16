@@ -1,0 +1,92 @@
+openapi: '3.0.0'
+info:
+  title: Hoge
+  version: '0.1.0'
+servers:
+  - url: http://{host}:{port}/wovenlog/api/
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '8080'
+paths:
+  /spot?limit={limit}&offset={offset}:
+    get:
+      summary: summary
+      description: spot list
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: number
+            example: 10
+        - name: offset
+          in: query
+          schema:
+            type: number
+            example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  limit:
+                    type: number
+                  offset:
+                    type: number
+                  total:
+                    type: number
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        test:
+                          type: string
+                          example: "test1"
+                          description: test
+                        id:
+                          type: string
+                          example: "spot0001"
+                        name:
+                          type: string
+                          example: "McDonald's"
+                        address:
+                          type: string
+                          example: "〒100-0005 Tokyo, Chiyoda City, Marunouchi, 1 Chome-9-1 東京駅一番街"
+                        latitude:
+                          type: number
+                          example: 35.6796886
+                        longitude:
+                          type: string
+                          example: "139.7678116"
+                        url:
+                          type: string
+                          example: "https://www.google.com/maps/place/McDonald's./@35.6796886,139.7678116,15z/data=!4m9!1m2!2m1!1sMcDonald's!3m5!1s0x60188bfeba8313b7:0xf0ef793b5d8bc354!8m2!3d35.679713!4d139.7677172!15sCgpNY0RvbmFsZCdzIgOIAQFaDCIKbWNkb25hbGQnc5IBFGZhc3RfZm9vZF9yZXN0YXVyYW50"
+                        image:
+                          type: string
+                        createdDate:
+                          type: string
+                        categoryId:
+                          type: string
+                        description:
+                          type: string
+                      
+                  
+
+
+
+
+
+#   ...
+# components:
+#   ...
+# security:
+#   ...
+# tags:
+#   ...
+# externalDocs:
+#   ...
