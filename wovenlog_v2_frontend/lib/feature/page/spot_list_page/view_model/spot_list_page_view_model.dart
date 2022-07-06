@@ -2,24 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wovenlog_v2_frontend/common_ui/design_system/resource/view_model.dart';
+import 'package:wovenlog_v2_frontend/feature/spot/spot_list_model.dart';
+import 'package:wovenlog_v2_frontend/feature/spot/spot_model.dart';
 
 part 'spot_list_page_view_model.freezed.dart';
 
 final spotListPageFutureProvider = FutureProvider<SpotListPageViewModel>(
   (ref) async {
     return ref.watch(spotListPageViewModelProvider);
-  },
-);
-
-// SpotListのdataをキャッシュするProvider
-final spotListProvider = Provider<List<Spot>>(
-  (ref) {
-    /// ApplicationService(APIを叩いてdataを取ってくる)
-    /// spotListにListを代入する
-    ///
-    /// spotList = SpotListRepository.fetchData();
-
-    return spotList;
   },
 );
 
@@ -34,7 +24,7 @@ final spotListPageViewModelProvider = Provider<SpotListPageViewModel>(
 @freezed
 class SpotListPageViewModel extends ViewModel with _$SpotListPageViewModel {
   const factory SpotListPageViewModel({
-    required List<Spot> spotList,
+    required SpotListModel spotList,
   }) = _SpotListPageViewModel;
 
   const SpotListPageViewModel._();
@@ -42,8 +32,10 @@ class SpotListPageViewModel extends ViewModel with _$SpotListPageViewModel {
   @override
   Widget toWidget(BuildContext context, WidgetRef ref) {
     return ListView.builder(
-      itemCount: spotList.length,
-      itemBuilder: itemBuilder,
+      itemCount: spotList.data.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Text(spotList.data[index].name);
+      },
     );
   }
 }

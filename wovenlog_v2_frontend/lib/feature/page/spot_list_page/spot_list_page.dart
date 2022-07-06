@@ -4,7 +4,7 @@ import 'package:wovenlog_v2_frontend/feature/page/spot_list_page/view_model/spot
 
 @immutable
 class SpotListPage extends HookConsumerWidget {
-  const SpotListPage({Key? key}) : super(key: key);
+  const SpotListPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -13,8 +13,8 @@ class SpotListPage extends HookConsumerWidget {
       ),
       body: ref.watch(spotListPageFutureProvider).when(
             data: (data) => data.toWidget(context, ref),
-            error: error,
-            loading: CircularProgressIndicator(),
+            error: (e, stack) => Text(e.toString()),
+            loading: () => const CircularProgressIndicator(),
           ),
     );
   }
