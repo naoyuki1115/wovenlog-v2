@@ -1,3 +1,13 @@
+# 設計方針
+- Riverpodの導入
+  - 従来：WidgetツリーでLayoutを構成
+    - LayoutとState（Presentation Logic）が混在
+  - 導入後
+    - Layout: class
+    - 
+
+
+
 
 # LoginPage
 - LoginPageViewModel
