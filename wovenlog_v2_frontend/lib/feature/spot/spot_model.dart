@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 
 part 'spot_model.freezed.dart';
 
@@ -12,7 +13,7 @@ class Spot with _$Spot {
     @Default(0.0) double longitude,
     @Default('') String url,
     @Default('') String image,
-    @Default(DateTime.now) DateTime createdDate,
+    required DateTime createdDate,
     @Default('') String categoryId,
     @Default('') String description,
   }) = _Spot;

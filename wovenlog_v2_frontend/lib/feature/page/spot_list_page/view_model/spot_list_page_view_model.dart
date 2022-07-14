@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wovenlog_v2_frontend/common_ui/design_system/resource/view_model.dart';
 import 'package:wovenlog_v2_frontend/feature/spot/spot_list_model.dart';
-import 'package:wovenlog_v2_frontend/feature/spot/spot_model.dart';
 
 part 'spot_list_page_view_model.freezed.dart';
 
