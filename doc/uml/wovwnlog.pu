@@ -1,0 +1,56 @@
+@startuml 
+
+Actor "User" as user
+box App #d4e1f5
+participant "[App]\nSpot List page" as listPage
+participant "[App]\nSpot Post page" as postPage
+participant "[App]\nSpot Detail page" as detailPage
+end box
+
+box Backend #e9ffe9
+participant "[Backend]\nAPI server" as api
+database "[Backend?]\nSpot DB" as db
+end box
+entity "[Firebase]\nCloud Storage" as fb
+
+== Get Spot List workflow ==
+user -> listPage: Access the spot list page
+listPage -> api: Request the spot list of the category\n(HTTP GET /spots?limit=20&offset=1)
+loop
+    api -> db: SELECT the spot informations
+    db -> api: Spot informations
+end
+api -> listPage: List of spot title, address, image URL
+loop
+    listPage -> fb: Get image by URL
+    fb -> listPage: Image
+end
+listPage -> user: Display the spot list
+opt load more list case (20 spots per one load)
+    user -> listPage: Load the more spot
+    listPage -> api: Request the spot list of the category\n(HTTP GET /spots?limit=20&offset=21)
+    loop
+        api -> db: SELECT the spot
+        db -> api: Spots information
+    end
+    api -> listPage: List of spot title, address, image URL
+    loop
+        listPage -> fb: Get image by URL
+        fb -> listPage: Image
+    end
+    listPage -> user: Display the spot list
+end
+== Post Spot workflow ==
+user -> postPage: Access the spot post page
+user -> postPage: Input new spot information
+user -> postPage: Click the Post button
+postPage -> fb: Post spot image
+fb -> postPage: Image URL
+postPage -> postPage: Create request body
+postPage -> api: Post the spot informations\n(HTTP POST /spots)
+api -> db: INSERT the spot
+db -> api
+api -> postPage: Spot information
+postPage -> user: Display completion the spot post
+
+@enduml
