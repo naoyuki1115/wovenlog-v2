@@ -23,7 +23,7 @@ final spotListPageViewModelProvider = Provider<SpotListPageViewModel>(
 @freezed
 class SpotListPageViewModel extends ViewModel with _$SpotListPageViewModel {
   const factory SpotListPageViewModel({
-    required SpotListModel spotList,
+    required SpotList spotList,
   }) = _SpotListPageViewModel;
 
   const SpotListPageViewModel._();

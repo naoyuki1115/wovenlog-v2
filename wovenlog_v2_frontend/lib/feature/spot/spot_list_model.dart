@@ -6,19 +6,19 @@ import 'package:wovenlog_v2_frontend/repository/spot_list_repository.dart';
 part 'spot_list_model.freezed.dart';
 
 // SpotListのdataをキャッシュするProvider
-final spotListProvider = Provider<SpotListModel>(
+final spotListProvider = Provider<SpotList>(
   (ref) {
     /// ApplicationService(APIを叩いてdataを取ってくる)
     /// spotListにListを代入する
-    return SpotListModel(data: dummySpotList);
+    return SpotList(data: dummySpotList);
   },
 );
 
 @freezed
-class SpotListModel with _$SpotListModel {
-  const factory SpotListModel({
+class SpotList with _$SpotList {
+  const factory SpotList({
     required List<Spot> data,
   }) = _SpotListModel;
 
-  const SpotListModel._();
+  const SpotList._();
 }
