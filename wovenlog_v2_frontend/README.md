@@ -28,3 +28,9 @@ flutter pub get
 ```
 flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
+# 起動方法
+起動
+```
+cd wovenlog_v2_frontend
+flutter run lib/main.dart
+```
