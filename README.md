@@ -10,7 +10,7 @@ docker-compose up
 
 docker ps
 
-docker-compose exec wovenlog_v2_backend-app-1 bash
+docker exec -it wovenlog_v2_backend-app-1 bash
 
 sh gradlew build
 
