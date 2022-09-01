@@ -2,6 +2,9 @@
 
 # Backendの環境構築
 ## Memo
+
+https://www.notion.so/Docker-f565b21fcdad41878633b97172757c1f
+
 ### 実行方法
 ```
 cd wovenlog_v2_backend
